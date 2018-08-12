@@ -633,7 +633,7 @@ client.on('message', message => {
 
   
 client.on('message', message => {
- if (message.content.startsWith("ترحيب 6")) {
+ if (message.content.startsWith("welcome 2")) {
                                  var mentionned = message.mentions.users.first();
              var mentionavatar;
                if(mentionned){
@@ -651,8 +651,8 @@ client.on('message', message => {
   var EsTeKnAN = new Discord.RichEmbed()
   .setColor('RANDOM')
   .setThumbnail(`${mentionavatar.avatarURL}`)
-  .addField("***شكرا الانضمامك الينا***" ,mentionavatar.username )
-  .setDescription('***مرحبا بك كثر النجوم الساطعة وكثر الورود الفائحة التي تفوح بأزكى العطور وكثر ما تكتب الأقلام من الحروف والعبارات. ***')
+  .addField("***Thank u for being member of Ac***" ,mentionavatar.username )
+  .setDescription('***Welcome,Have fun,The first plane***')
   .setImage('https://www.askideas.com/media/13/Welcome-Sign-For-Front-Door.jpg')
    message.channel.sendEmbed(EsTeKnAN);
   }
