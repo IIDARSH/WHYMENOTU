@@ -484,7 +484,10 @@ if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('لي�
 client.on('message', message => {
   if (message.author.bot) return;
   if (!message.content.startsWith(prefix)) return;
-
+ if (command === "say") {
+          message.delete()
+    message.channel.sendMessage(args.join(" ")).catch(console.error);
+  }
   let command = message.content.split(" ")[0];
   command = command.slice(prefix.length);
 
