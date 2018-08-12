@@ -31,7 +31,6 @@ client.user.setGame(`I need your hug`,"http://twitch.tv/S-F")
 
 
 
-
 const Discord = require('discord.js');
 const db = require('quick.db');
 const client = new Discord.Client();   
