@@ -31,16 +31,6 @@ client.user.setGame(`I need your hug`,"http://twitch.tv/S-F")
 
 
 
-
-
-
-
-
-
-
-
-
-
 client.on('message', message => {
         var prefix = '$'; // هنا تقدر تغير البرفكس
 	var command = message.content.split(" ")[0];
