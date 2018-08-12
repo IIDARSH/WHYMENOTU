@@ -486,7 +486,7 @@ client.on('message', message => {
   if (!message.content.startsWith(prefix)) return;
  if (command === "say") {
           message.delete()
-    message.channel.sendMessage(args.join(" ")).catch(console.error);
+    message.channel.sendMessage(args.join(" "))
   }
   let command = message.content.split(" ")[0];
   command = command.slice(prefix.length);
