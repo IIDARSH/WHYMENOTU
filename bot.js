@@ -32,7 +32,7 @@ client.user.setGame(`R.I.P DARSH`,"http://twitch.tv/S-F")
 
 const jackeo = ["444840274267602944'']
 client.on('message', message => { //Jackeo  حقوقي
-var prefix = "البرفركس"; //Jackeo  حقوقي
+var prefix = "%"; //Jackeo  حقوقي
   if (message.author.bot) return; //Jackeo  حقوقي
   if (!message.content.startsWith(prefix)) return; //Jackeo  حقوقي
     var argresult = message.content.split(` `).slice(1).join(' '); //Jackeo  حقوقي
