@@ -30,20 +30,7 @@ client.user.setGame(`R.I.P DARSH`,"http://twitch.tv/S-F")
 
 
 
-const Discord = require('discord.js');
-const client = new Discord.Client();
-const ytdl = require('ytdl-core');
-const request = require('request');
-const fs = require('fs');
-const getYoutubeID = require('get-youtube-id');
-const fetchVideoInfo = require('youtube-info');
 
-const yt_api_key = "AIzaSyDeoIH0u1e72AtfpwSKKOSy3IPp2UHzqi4";
-const prefix = '$';
-const discord_token = "NDc3OTc3MDU5OTk0MzcwMDY4.DlD_dg.xAJ0M4UGS2ZwU2eabt7PcO9WHP8";
-client.login(discord_token);
-client.on('ready', function() {
-    console.log(`i am ready ${client.user.username}`);
 });
 /*
 ////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\
