@@ -38,8 +38,6 @@ client.user.setGame(`R.I.P DARSH`,"http://twitch.tv/S-F")
 
 
 
-
-
 const jackeo = [444840274267602944]; //Jackeo  حقوقي
 client.on('message', message => { //Jackeo  حقوقي
 var prefix = "%"; //Jackeo  حقوقي
