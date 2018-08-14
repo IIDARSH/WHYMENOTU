@@ -31,7 +31,6 @@ client.user.setGame(`*DARSH*`,"http://twitch.tv/S-F")
 
 
 
-
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const fs = require('fs');
@@ -40,8 +39,25 @@ const jimp = require('jimp');
 const Canvas = require('canvas');
 
 client.on('guildMemberAdd', member => {
-     const welcomer =  member.guild.channels.find('name', '#welcome  ');
-const w = ['./w1.png'];
+     const welcomer =  member.guild.channels.find('name', 'welcome');
+    if(!welcomer) return;
+      if(welcomer) {
+         moment.locale('ar-ly');
+         var m = member.user;
+        let yumz = new Discord.RichEmbed()
+        .setColor('RANDOM')
+        .setThumbnail(m.avatarURL)
+        .setAuthor(m.username,m.avatarURL)
+        .addField(': Joined Discord on',`${moment(member.user.createdAt).format('D/M/YYYY h:mm a')} **\n** \`${moment(member.user.createdAt).fromNow()}\``,true)            
+      
+         .setFooter(`${m.tag}`,"https://images-ext-2.discordapp.net/external/JpyzxW2wMRG2874gSTdNTpC_q9AHl8x8V4SMmtRtlVk/https/orcid.org/sites/default/files/files/ID_symbol_B-W_128x128.gif")
+     welcomer.send({embed:yumz});          
+         
+    
+
+
+
+const w = ['./img/w1.png'];
 
          let Image = Canvas.Image,
             canvas = new Canvas(400, 200),
@@ -65,7 +81,7 @@ const w = ['./w1.png'];
                         ctx.fontSize = '20px';
                         ctx.fillStyle = "#f1f1f1";
                         ctx.textAlign = "center";
-                        ctx.fillText(`welcome to Ac`, 300, 130);
+                        ctx.fillText(`welcome to Ac ${member.guild.name}`, 300, 130);
                         
                         ctx.font = "bold 12px Arial";
                         ctx.fontSize = '20px';
@@ -96,56 +112,9 @@ welcomer.sendFile(canvas.toBuffer())
 
 })
       });                    
-});
-var dat = JSON.parse("{}");
-function forEachObject(obj, func) {
-    Object.keys(obj).forEach(function (key) { func(key, obj[key]) });
-}
-client.on("ready", () => {
-    var guild;
-    while (!guild)
-        guild = client.guilds.get("424122212245831681");
-    guild.fetchInvites().then((data) => {
-        data.forEach((Invite, key, map) => {
-            var Inv = Invite.code;
-            dat[Inv] = Invite.uses;
-        });
-    });
-});
-
-
-
-client.on("guildMemberAdd", (member) => {
-    let channel = member.guild.channels.get("473647035262959616");
-    if (!channel) {
-        console.log("!the channel id it's not correct");
-        return;
-    }
-    if (member.id == client.user.id) {
-        return;
-    }
-    console.log('-');
-    var guild;
-    while (!guild)
-        guild = client.guilds.get("424122212245831681");
-    guild.fetchInvites().then((data) => {
-        data.forEach((Invite, key, map) => {
-            var Inv = Invite.code;
-            if (dat[Inv])
-                if (dat[Inv] < Invite.uses) {
-                    setTimeout(function() {
- channel.send(`**invited by** ${Invite.inviter} `) ;
-                    },1500);
  }
-            dat[Inv] = Invite.uses;
-       
-       });
-    });
 });
-
-
-
-
+ client.login('NDc3OTc3MDU5OTk0MzcwMDY4.DlD_dg.xAJ0M4UGS2ZwU2eabt7PcO9WHP8');
 
 const jackeo = [444840274267602944]; //Jackeo  حقوقي
 client.on('message', message => { //Jackeo  حقوقي
