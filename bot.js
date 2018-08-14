@@ -4,7 +4,7 @@ const prefix = '$'
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
-client.user.setGame(`*DARSH*`,"http://twitch.tv/S-F")
+client.user.setGame(`*DARSH WAS LOVE MARI*`,"http://twitch.tv/S-F")
   console.log('')
   console.log('')
   console.log('╔[═════════════════════════════════════════════════════════════════]╗')
@@ -32,7 +32,13 @@ client.user.setGame(`*DARSH*`,"http://twitch.tv/S-F")
 
 
 
-2944]; //Jackeo  حقوقي
+
+
+
+
+
+
+const jackeo = [444840274267602944]; //Jackeo  حقوقي
 client.on('message', message => { //Jackeo  حقوقي
 var prefix = "%"; //Jackeo  حقوقي
   if (message.author.bot) return; //Jackeo  حقوقي
