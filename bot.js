@@ -28,15 +28,8 @@ client.user.setGame(`R.I.P/DARSH`,"http://twitch.tv/S-F")
   console.log('')
 });
 
-client.on('message', message => {
-    if (message.content === "$id") {
-    let embed = new Discord.RichEmbed()
-   .setColor("RANDOM")
-   .setDescription(`** :id: : ${message.author.id} , ${message.author.username} **`)
-   message.channel.sendEmbed(embed);
-    }
-  
-     });
+
+   
 
 client.on('message', eyad => {
   if (eyad.content.startsWith('mute')) {
