@@ -58,27 +58,22 @@ client.on('message', message => {
 }
 });
    
-
-client.on('message',function(message) {
-  if (message.author.bot) return;
-
-
-                  if(!message.channel.guild) return;
-
-                    if (message.content === prefix + "members") {
- const embed = new Discord.RichEmbed()
-
-    .setDescription(`**Members info ✨
- اونلاين:   ${message.guild.members.filter(m=>m.presence.status == 'online').size}
-  حاله حمراء       ${message.guild.members.filter(m=>m.presence.status == 'dnd').size}
-  حاله صفراء:     ${message.guild.members.filter(m=>m.presence.status == 'idle').size}
-  الاوفلاين:     ${message.guild.members.filter(m=>m.presence.status == 'offline').size}
-   عدد الاعضاء:  ${message.guild.memberCount - message.guild.members.filter(m=>m.user.bot).size}
- البوتات: ${message.guild.members.filter(m=>m.user.bot).size} **`)
-         message.channel.send({embed});
-
+client.on('message', message => {
+   if (message.content === "myid") {
+   let embed = new Discord.RichEmbed()
+  .setColor("RANDOM")
+  .setThumbnail(message.author.avatarURL)
+  .addField("Name:",`${message.author.username}`, true)
+  .addField('Discrim:',"#" +  message.author.discriminator, true)
+  .addField("ID:", message.author.id, true)
+  .addField("Create At:", message.author.createdAt, true)
+     
+     
+  message.channel.sendEmbed(embed);
     }
-      });
+});
+
+
 
 client.on('message', eyad => {
   if (eyad.content.startsWith('mute')) {
