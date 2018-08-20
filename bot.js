@@ -28,22 +28,34 @@ client.user.setGame(`R.I.P/DARSH`,"http://twitch.tv/S-F")
   console.log('')
 });
 
+client.on('message', message => {
+     if(message.content.startsWith(prefix + "pc")) {
+ let args = message.content.split(" ").slice(1);
 
-const perfix = '$';
-client.on('message', msg => {
- if (msg.content.startsWith($ + 'tell')) {
-      let args = msg.content.split(' ').slice(1)
-      if (!args[0]) return msg.reply(`**منشن الشخص اولا**`)
-      if (!args[1]) return msg.reply(`**ما هي الرساله المطلوب ارسالها**`)
-      let Emoko = msg.mentions.members.first()
-      if (!Emoko) return msg.reply(`**يجب تحديد الشخص**`)
-      let EmokoEmbed = new Discord.RichEmbed()
-      .setTitle(`**رسالة جديدة:new_moon_with_face: **`)
-      .setDescription(args.join(" "))
+    var user = message.mentions.users.first();
+    var reason = args.slice(1).join(' ');
+    const embed = new Discord.RichEmbed()
+        .setColor(0xFFB200)
+        .setTimestamp();
 
-      client.users.get(`${Emoko.id}`).send(EmokoEmbed)
-      msg.reply(`**تم ارسال الرساله**`)
+    if (!user) {
+        embed.addField("DM A Person", `Who are you going to DM ${message.author.tag}?`)
+            .setFooter(`lol why did i add dis again?`);
+        return message.channel.send({embed});
+    } if (!reason) {
+        embed.addField("DM A Person", `What are you going to say to ${user.tag}?`)
+        return message.channel.send({embed});
     }
+    embed.addField("DM A Person", `Successfully sent a DM to ${user.tag}!`)
+        .setFooter(`lol.`);
+    message.channel.send({embed});
+    const embed1 = new Discord.RichEmbed()
+        .setColor(0xFFB200)
+        .setTimestamp()
+        .addField("You have received mail! :mailbox_with_mail:", `**${reason}**`)
+        .setFooter(`Sent by ${message.author.tag}.`);
+    user.send({embed: embed1});
+}
 });
    
 
