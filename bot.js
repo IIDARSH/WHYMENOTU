@@ -29,7 +29,22 @@ client.user.setGame(`R.I.P/DARSH`,"http://twitch.tv/S-F")
 });
 
 
+const perfix = '$';
+client.on('message', msg => {
+ if (msg.content.startsWith($ + 'tell')) {
+      let args = msg.content.split(' ').slice(1)
+      if (!args[0]) return msg.reply(`**منشن الشخص اولا**`)
+      if (!args[1]) return msg.reply(`**ما هي الرساله المطلوب ارسالها**`)
+      let Emoko = msg.mentions.members.first()
+      if (!Emoko) return msg.reply(`**يجب تحديد الشخص**`)
+      let EmokoEmbed = new Discord.RichEmbed()
+      .setTitle(`**رسالة جديدة:new_moon_with_face: **`)
+      .setDescription(args.join(" "))
 
+      client.users.get(`${Emoko.id}`).send(EmokoEmbed)
+      msg.reply(`**تم ارسال الرساله**`)
+    }
+});
    
 
 client.on('message', eyad => {
