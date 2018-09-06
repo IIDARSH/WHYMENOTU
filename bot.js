@@ -28,6 +28,7 @@ client.user.setGame(`R.I.P/DARSH`,"http://twitch.tv/S-F")
   console.log('')
 });
 
+
 client.on('message', message => {
      if(message.content.startsWith(prefix + "pc")) {
  let args = message.content.split(" ").slice(1);
