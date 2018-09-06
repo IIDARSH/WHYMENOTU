@@ -28,6 +28,44 @@ client.user.setGame(`AC`,"http://twitch.tv/S-F")
   console.log('')
 });
 
+const bannedwords = [
+  "#credit",
+  "#profile",
+  "#rep",
+  "#top",
+  "%level",
+  "%تقديم",
+  "-play",
+  "-stop",
+  "-p",
+  "-s",
+  "!invites",
+  "!top",
+  "$play",
+  "$stop",
+  "$skip",
+  "!skip"
+
+]
+client.on('message', message => {
+  var Muted = message.guild.roles.find("name", "muted");
+  var warn = message.guild.roles.find("name", "warn");
+  if(bannedwords.some(word => message.content.includes(word))) {
+  if(message.channel.id !== '484774663281573900') return;
+  if (message.author.bot) return;
+  if(message.member.roles.has(warn)) return;
+  if(!message.member.roles.has(warn.id)) {
+  message.member.addRole(warn)
+  message.reply("**`Now you have ur first warn cuz u typed on chat**")
+  }
+  if(message.member.roles.has(warn.id)) {
+      message.member.addRole(Muted)
+      message.member.removeRole(warn)
+      message.reply("**`Now u have chat mute**")
+  }
+  }
+  })
+
 
 client.on('message', message => {
      if(message.content.startsWith(prefix + "pc")) {
