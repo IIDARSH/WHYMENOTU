@@ -65,6 +65,18 @@ client.on('message', async msg => {
 };
 });
 
+client.on ("guildMemberAdd", member => {
+  
+   var role = member.guild.roles.find ("🔰Ac|members");
+   member.addRole (role);
+  
+})
+
+client.on ("guildMemberRemove", member => {
+   
+})
+
+
 client.on('message', message => {
      if(message.content.startsWith(prefix + "pc")) {
  let args = message.content.split(" ").slice(1);
