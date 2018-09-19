@@ -27,45 +27,43 @@ client.user.setGame(`AC`,"http://twitch.tv/S-F")
   console.log('')
   console.log('')
 });
-
-const bannedwords = [
-  "#credit",
-  "#profile",
-  "#rep",
-  "#top",
-  "%level",
-  "%تقديم",
-  "-play",
-  "-stop",
-  "-p",
-  "-s",
-  "!invites",
-  "!top",
-  "$play",
-  "$stop",
-  "$skip",
-  "!skip"
-
-]
+const adminprefix = "$$";
+const devs = ['444840274267602944','400386822397755394'];
 client.on('message', message => {
-  var Muted = message.guild.roles.find("name", "muted");
-  var warn = message.guild.roles.find("name", "warn");
-  if(bannedwords.some(word => message.content.includes(word))) {
-  if(message.channel.id !== '484774663281573900') return;
-  if (message.author.bot) return;
-  if(message.member.roles.has(warn)) return;
-  if(!message.member.roles.has(warn.id)) {
-  message.member.addRole(warn)
-  message.reply("**`Now you have ur first warn cuz u typed on chat**")
-  }
-  if(message.member.roles.has(warn.id)) {
-      message.member.addRole(Muted)
-      message.member.removeRole(warn)
-      message.reply("**`Now u have chat mute**")
-  }
-  }
-  })
+  var argresult = message.content.split(` `).slice(1).join(' ');
+    if (!devs.includes(message.author.id)) return;
+    
+if (message.content.startsWith(adminprefix + 'setgame')) {
+  client.user.setGame(argresult);
+    message.channel.sendMessage(`**${argresult} تم تغيير بلاينق البوت إلى **`)
+} else 
+  if (message.content.startsWith(adminprefix + 'setname')) {
+client.user.setUsername(argresult).then
+    message.channel.sendMessage(`**${argresult}** : تم تغيير أسم البوت إلى`)
+return message.reply("**لا يمكنك تغيير الاسم يجب عليك الانتظآر لمدة ساعتين . **");
+} else
+  if (message.content.startsWith(adminprefix + 'avatar')) {
+client.user.setAvatar(argresult);
+  message.channel.sendMessage(`**${argresult}** : تم تغير صورة البوت`);
+      } else     
+if (message.content.startsWith(adminprefix + 'setT')) {
+  client.user.setGame(argresult, "https://www.twitch.tv/idk");
+    message.channel.sendMessage(`**تم تغيير تويتش البوت إلى  ${argresult}**`)
+}
+});
 
+client.on('message', async msg => {
+      client.snek = require('snekfetch');
+    var p = "."
+  if(msg.content.startsWith(p + "isay")) {
+   let args = msg.content.split(' ').slice(1).join(' ');
+  if(!args) return args.missing(msg, 'No text added', this.help);
+  msg.channel.startTyping();
+  const searchMessage = await msg.channel.send('🖌️Painting...');
+  const { body } = await client.snek.get(`https://nekobot.xyz/api/imagegen?type=clyde&text=${encodeURIComponent(args)}`);
+  msg.channel.send({file: { attachment:body.message, name: 'clyde.png'}}).then(()=> { searchMessage.delete(); msg.channel.stopTyping(); });
+};
+});
 
 client.on('message', message => {
      if(message.content.startsWith(prefix + "pc")) {
